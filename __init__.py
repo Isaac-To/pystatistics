@@ -112,19 +112,16 @@ class normalDistribution:
 
 class fiveNumberSummary:
     def __init__(self, data: list):
-        self.data = data.sort()
-    
+        self.data = data
+        self.data.sort()
+
     def calculate(self):
-        self.min = self.data[0]
-        self.max = self.data[-1]
-        self.q1 = center.quartiles(self.data)[0]
-        self.q3 = center.quartiles(self.data)[1]
-        self.median = center.median(self.data)
         return {
-            "min": self.min,
-            "max": self.max,
-            "q1": self.q1,
-            "q3": self.q3,
-            "median": self.median
+            "min": self.data[0],
+            "max": self.data[-1],
+            "q1":  center.quartiles(self.data)[0],
+            "q3": center.quartiles(self.data)[1],
+            "median": center.median(self.data)
         }
-    
+
+#print(fiveNumberSummary([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).calculate())
