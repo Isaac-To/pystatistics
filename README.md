@@ -1,5 +1,13 @@
 # pyDataStats
 
+## Install
+
+    pip install purePyStatistics
+
+## Usage
+
+    import pystatistics
+
 ## Includes basic functions for doing statistics on Python
 
 ### Ways of finding the center:
