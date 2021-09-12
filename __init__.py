@@ -109,3 +109,22 @@ class normalDistribution:
                     return val
                 sum += normalDistribution.probabilityDensityFunction(mean, standardDeviation, val)/100000
         return val
+
+class fiveNumberSummary:
+    def __init__(self, data: list):
+        self.data = data.sort()
+    
+    def calculate(self):
+        self.min = self.data[0]
+        self.max = self.data[-1]
+        self.q1 = center.quartiles(self.data)[0]
+        self.q3 = center.quartiles(self.data)[1]
+        self.median = center.median(self.data)
+        return {
+            "min": self.min,
+            "max": self.max,
+            "q1": self.q1,
+            "q3": self.q3,
+            "median": self.median
+        }
+    
