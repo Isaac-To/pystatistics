@@ -1,11 +1,12 @@
 from distutils.core import setup
 setup(
     name = 'purePyStatistics',
-    packages = ['pystatistics'],
+    packages = ['.'],
     version = '0.1.4',
     license='MIT',
     description = 'Basic Functions for Statistics',
     author = 'Isaac To',
+    author_email = 'isaacto3890@gmail.com',
     url = 'https://github.com/chisaku-dev/pyDataStats',
     download_url = 'https://github.com/chisaku-dev/pyDataStats/archive/refs/tags/0.1.tar.gz',
     keywords = ['statistics', 'data'],
