@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
     name = 'purePyStatistics',
-    packages = ['.'],
+    packages = ['..'],
     version = '0.1.4',
     license='MIT',
     description = 'Basic Functions for Statistics',
