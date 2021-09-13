@@ -118,3 +118,28 @@ class normalDistribution:
                     return val
                 sum += normalDistribution.probabilityDensityFunction(mean, standardDeviation, val)/100000
         return val
+
+class twodarray:
+    def __init__(self, *array):
+        self.array = [set(i) for i in array]
+    
+    def tostring(self):
+        return self.array
+
+    def index(self, index):
+        return self.array[index]
+    
+    def append(self, x, y):
+        self.array.append([x, y])
+
+    def remove(self, index):
+        self.array.remove(index)
+
+    def removeWhereX(self, x):
+        self.array = [i for i in self.array if i[0] != x]
+    
+    def removeWhereY(self, y):
+        self.array = [i for i in self.array if i[1] != y]
+
+ar = twodarray((0, 1), (0, 2))
+print(ar.index(0))
