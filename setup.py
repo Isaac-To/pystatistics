@@ -1,18 +1,13 @@
 from distutils.core import setup
-from os import remove, listdir, path
-for i in listdir(f'{path.dirname(__file__)}/dist'):
-    remove(f'{path.dirname(__file__)}/dist/{i}')
-version = input('What is the new version: ')
 setup(
     name = 'purePyStatistics',
     packages = ['pystatistics'],
-    version = version,
+    version = '0.1.7',
     license='MIT',
     description = 'Basic Functions for Statistics',
     author = 'Isaac To',
     author_email = 'isaacto3890@gmail.com',
     url = 'https://github.com/chisaku-dev/pyDataStats',
-    download_url = f'https://github.com/chisaku-dev/pyDataStats/archive/refs/tags/{version}.tar.gz',
     keywords = ['statistics', 'data', 'probability'],
     classifiers=[
         'Development Status :: 3 - Alpha',
