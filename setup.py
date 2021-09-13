@@ -1,10 +1,8 @@
 from distutils.core import setup
-from os import remove, listdir
+from os import remove, listdir, path
+for i in listdir(f'{path.dirname(__file__)}/dist'):
+    remove(f'{path.dirname(__file__)}/dist/{i}')
 version = input('What is the new version: ')
-try:
-    for i in listdir('./dist'):
-        remove(i)
-except: pass
 setup(
     name = 'purePyStatistics',
     packages = ['programfiles'],
