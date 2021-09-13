@@ -5,6 +5,15 @@ class basic:
         sum = 0
         for i in data: sum += i
         return sum
+    def fivenumbersummary(data):
+        data.sort()
+        return {
+            "min": data[0],
+            "max": data[-1],
+            "q1":  center.quartiles(data)[0],
+            "q3": center.quartiles(data)[1],
+            "median": center.median(data)
+        }
 
 class center:
     def mean(data):
