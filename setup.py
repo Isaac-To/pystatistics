@@ -1,15 +1,18 @@
 from distutils.core import setup
+from os import remove
+version = input('What is the new version: ')
+remove('dist')
 setup(
     name = 'purePyStatistics',
-    packages = ['.'],
-    version = '0.1.4',
+    packages = ['programfiles'],
+    version = version,
     license='MIT',
     description = 'Basic Functions for Statistics',
     author = 'Isaac To',
     author_email = 'isaacto3890@gmail.com',
     url = 'https://github.com/chisaku-dev/pyDataStats',
-    download_url = 'https://github.com/chisaku-dev/pyDataStats/archive/refs/tags/0.1.tar.gz',
-    keywords = ['statistics', 'data'],
+    download_url = f'https://github.com/chisaku-dev/pyDataStats/archive/refs/tags/{version}.tar.gz',
+    keywords = ['statistics', 'data', 'probability'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
