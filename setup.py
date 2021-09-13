@@ -5,7 +5,7 @@ for i in listdir(f'{path.dirname(__file__)}/dist'):
 version = input('What is the new version: ')
 setup(
     name = 'purePyStatistics',
-    packages = ['programfiles'],
+    packages = ['pystatistics'],
     version = version,
     license='MIT',
     description = 'Basic Functions for Statistics',
