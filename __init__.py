@@ -5,6 +5,15 @@ class basic:
         sum = 0
         for i in data: sum += i
         return sum
+    def fivenumbersummary(data):
+        data.sort()
+        return {
+            "min": data[0],
+            "max": data[-1],
+            "q1":  center.quartiles(data)[0],
+            "q3": center.quartiles(data)[1],
+            "median": center.median(data)
+        }
 
 class center:
     def mean(data):
@@ -109,19 +118,3 @@ class normalDistribution:
                     return val
                 sum += normalDistribution.probabilityDensityFunction(mean, standardDeviation, val)/100000
         return val
-
-class fiveNumberSummary:
-    def __init__(self, data: list):
-        self.data = data
-        self.data.sort()
-
-    def calculate(self):
-        return {
-            "min": self.data[0],
-            "max": self.data[-1],
-            "q1":  center.quartiles(self.data)[0],
-            "q3": center.quartiles(self.data)[1],
-            "median": center.median(self.data)
-        }
-
-#print(fiveNumberSummary([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).calculate())
