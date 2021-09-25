@@ -202,7 +202,8 @@ class twodarray:
             "slope": slope,
             "constant": constant,
             "r": r,
-            "r2": r**2
+            "r2": r**2,
+            "eq": f"{slope}x + {constant}"
         }
 
     def residual(self, x, y):
@@ -210,4 +211,39 @@ class twodarray:
         return y - (eq["slope"]*x + eq["constant"])
 
     def recurResidual(self):
-        return [[i[0], self.residual(i[0], i[1])] for i in self.array]
+        return [[[i[0], i[1]], self.residual(i[0], i[1])] for i in self.array]
+
+    def outlier(self):
+        maxResid = max(self.recurResidual())
+        return [i for i in self.array if self.residual(i[0], i[1]) == maxResid[1]]
+
+    def simpleRender(self):
+        minX = int(min(self.xList()) - 1)
+        minY = int(min(self.yList()) - 1)
+        maxX = int(max(self.xList()) + 1)
+        maxY = int(max(self.yList()) + 1)
+        eq = self.leastSquaresRegressionLine()
+        display = ""
+        for y in range(maxY, minY, -1):
+            if y % 5 == 0:
+                display += str(y)
+            else:
+                display += " "
+            for x in range(minX, maxX):
+                if [x, y] in self.array:
+                    display += " . "
+                elif int(eq["slope"] * x + eq["constant"]) == y:
+                    display += "~"
+                else:
+                    display += "   "
+            display += "\n"
+        display += " "
+        for y in range(minY, maxY):
+            if y % 5 == 0:
+                display += f" {y} "
+            else:
+                display += "   "
+        print(display)
+
+arr = twodarray([0, 1], [5, 5], [2, 3], [2, 5], [4, 5], [6, 8], [9, 9])
+arr.simpleRender()

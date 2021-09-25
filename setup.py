@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name = 'purePyStatistics',
     packages = ['pystatistics'],
-    version = '0.1.7',
+    version = '0.1.11',
     license='MIT',
     description = 'Basic Functions for Statistics',
     author = 'Isaac To',
