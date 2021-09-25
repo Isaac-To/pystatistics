@@ -226,7 +226,7 @@ class twodarray:
         display = ""
         for y in range(maxY, minY, -1):
             if y % 5 == 0:
-                display += str(y)
+                display += "-"
             else:
                 display += " "
             for x in range(minX, maxX):
@@ -240,10 +240,7 @@ class twodarray:
         display += " "
         for y in range(minY, maxY):
             if y % 5 == 0:
-                display += f" {y} "
+                display += f" - "
             else:
                 display += "   "
         print(display)
-
-arr = twodarray([0, 1], [5, 5], [2, 3], [2, 5], [4, 5], [6, 8], [9, 9])
-arr.simpleRender()
