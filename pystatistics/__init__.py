@@ -5,6 +5,7 @@ class basic:
         sum = 0
         for i in data: sum += i
         return sum
+
     def fivenumbersummary(data):
         data.sort()
         return {
@@ -14,6 +15,9 @@ class basic:
             "q3": center.quartiles(data)[1],
             "median": center.median(data)
         }
+
+    def recurPow(data, pow):
+        return [i**pow for i in data]
 
 class center:
     def mean(data):
@@ -121,9 +125,9 @@ class normalDistribution:
 
 class twodarray:
     def __init__(self, *array):
-        self.array = [set(i) for i in array]
+        self.array = [i for i in array]
     
-    def tostring(self):
+    def toString(self):
         return self.array
 
     def index(self, index):
@@ -141,5 +145,69 @@ class twodarray:
     def removeWhereY(self, y):
         self.array = [i for i in self.array if i[1] != y]
 
-ar = twodarray((0, 1), (0, 2))
-print(ar.index(0))
+    def remove(self, x, y):
+        self.array = [i for i in self.array if i[0] != x and i[1] != y]
+
+    def clear(self):
+        self.array = []
+
+    def fill0(self, num):
+        self.array.clear()
+        self.array = [[0, 0] for i in range(0, num)]
+
+    def xList(self):
+        return [self.array[i][0] for i in range(len(self.array))]
+
+    def yList(self):
+        return [self.array[i][1] for i in range(len(self.array))]
+
+    def sort(self, d = "x", order = "asc"):
+        if d == "x":
+            dnum = 0
+        elif d == "y":
+            dnum = 1
+        for i in range(0, len(self.array)):
+            for j in range(i, len(self.array)):
+                if order == "asc":
+                    if self.array[i][dnum] > self.array[j][dnum]:
+                        self.array[i], self.array[j] = self.array[j], self.array[i]
+                elif order == "desc":
+                    if self.array[i][dnum] < self.array[j][dnum]:
+                        self.array[i], self.array[j] = self.array[j], self.array[i]
+
+    def r(self):
+        n = len(self.array)
+        x = self.xList()
+        y = self.yList()
+        xSq = basic.recurPow(x, 2)
+        ySq = basic.recurPow(y, 2)
+        xy = [x[i] * y[i] for i in range(n)]
+        sumX = basic.sum(x)
+        sumY = basic.sum(y)
+        sumXSq = basic.sum(xSq)
+        sumYSq = basic.sum(ySq)
+        sumXY = basic.sum(xy)
+        return (((n * sumXY) - (sumX * sumY))/(math.sqrt((n * sumXSq - sumX**2) * (n * sumYSq - sumY**2))))
+    
+    def rsquared(self):
+        return (self.r())**2
+
+    def leastSquaresRegressionLine(self):
+        r = self.r()
+        SDx = (spread.standardDeviation(self.xList()))
+        SDy = (spread.standardDeviation(self.yList()))
+        slope = r * (SDy/SDx)
+        constant = center.mean(self.yList()) - slope * center.mean(self.xList())
+        return {
+            "slope": slope,
+            "constant": constant,
+            "r": r,
+            "r2": r**2
+        }
+
+    def residual(self, x, y):
+        eq = (self.leastSquaresRegressionLine())
+        return y - (eq["slope"]*x + eq["constant"])
+
+    def recurResidual(self):
+        return [[i[0], self.residual(i[0], i[1])] for i in self.array]
