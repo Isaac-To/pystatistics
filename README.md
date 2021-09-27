@@ -23,4 +23,4 @@ Z Scores and Percentiles
 Probability Density, Culminative Density, Inverse Culminative Density
 
 ### 2D arrays
-Least Squares regression line, residuals, recursive residual, graphing, correlation, r^2
+Least Squares Regression Line, Residuals, Recursive Residual, Graphing, Correlation, r^2
