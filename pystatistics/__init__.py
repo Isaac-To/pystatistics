@@ -123,7 +123,7 @@ class normalDistribution:
                 sum += normalDistribution.probabilityDensityFunction(mean, standardDeviation, val)/100000
         return val
 
-class twodarray:
+class graph:
     def __init__(self, *array):
         self.array = [i for i in array]
     
