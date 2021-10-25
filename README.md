@@ -21,3 +21,6 @@ Z Scores and Percentiles
 
 ### Normal Distribution:
 Probability Density, Culminative Density, Inverse Culminative Density
+
+### 2D arrays
+Least Squares Regression Line, Residuals, Recursive Residual, Graphing, Correlation, r^2
