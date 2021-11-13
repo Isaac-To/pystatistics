@@ -244,3 +244,19 @@ class graph:
             else:
                 display += "   "
         print(display)
+
+class calculus:
+    def trapezoidal(eq, start, end, samples):
+        equalDistance = abs(end - start) / samples
+        equalMeasure = []
+        area = 0
+        #range generator
+        while not math.isclose(start, end):
+            equalMeasure.append(start)
+            start += equalDistance
+        #inclusive
+        equalMeasure.append(end)
+        values = [eval(eq.replace("x", "(" + str(i) + ")")) for i in equalMeasure]
+        for i in range(len(values)-1):
+            area += ((values[i + 1] - values[i]) * equalDistance) / 2 + min(values[i + 1], values[i]) * equalDistance
+        return area
